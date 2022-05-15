@@ -1,0 +1,38 @@
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /console
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:barogo
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+    database: H2
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.H2Dialect
+      generate-ddl: true
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    baseline-version: 0
+    locations: classpath:db/migration
+
+
+server:
+  forward-headers-strategy: native
+  servlet:
+    context-path: /barogo
+  port: 8080
+---
+spring:
+  config:
+    activate:
+      on-profile: default # ????

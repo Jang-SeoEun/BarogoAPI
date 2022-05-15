@@ -1,0 +1,179 @@
+{
+	"info": {
+		"_postman_id": "4e6c9ba8-37ec-43d3-867d-040ea1e78ae0",
+		"name": "바로고 API과제",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "회원가입API",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"memberId\":\"SeoEun\",\r\n    \"password\":\"Seoeunee0401!\",\r\n    \"memberName\":\"testName\",\r\n    \"authRole\":\"USER\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/barogo/join",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"barogo",
+						"join"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "로그인API",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"memberId\":\"SeoEun22\",\r\n    \"password\":\"Seoeunee0401!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/barogo/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"barogo",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "배송조회",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-AUTH-TOKEN",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiYXJvZ29BZG1pbiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1MjYxOTQ3NSwiZXhwIjoxNjUyNzA1ODc1fQ.CpcVJxKohVk4YotsLRBwWG14grZfoyLC1ENweHz5i3E",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"memberId\":\"SeoEun\",\r\n    \"fromDate\":\"2022-05-12 00:00:00\",\r\n    \"toDate\":\"2022-05-15 23:59:59\",\r\n    \"pageSize\":20\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/barogo/delivery",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"barogo",
+						"delivery"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "배송수정",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "X-AUTH-TOKEN",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJTZW9FdW4yMiIsInJvbGUiOiJVIiwiaWF0IjoxNjUyNjAwMTU1LCJleHAiOjE2NTI2ODY1NTV9.hFr5ryI-f6JoW0FP5kmsuj9hj0MB2mCOg6xFEffBBLg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"zipcode\":\"065132\",\r\n    \"frontAddress\":\"서울시 중랑구 앞주소\",\r\n    \"backAddress\":\"뒷주소 변경 테스트22\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/barogo/delivery/D2022051500002",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"barogo",
+						"delivery",
+						"D2022051500002"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "배송요청",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-AUTH-TOKEN",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJTZW9FdW4iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTY1MjYxOTgyOCwiZXhwIjoxNjUyNzA2MjI4fQ.wqXkUqWNoW60mkMqpA1Fi0qUZXXee1d6Mcn35VMgTuY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\r\n    \"memberId\":\"SeoEun\",\r\n    \"deliveryMsg\":\"Test Message 20220514\",\r\n    \"addressCreateDto\":{\r\n        \"name\":\"TestName\",\r\n        \"cellPhone\":\"010234568888\",\r\n        \"zipcode\":\"16161\",\r\n        \"frontAddress\":\"FRont addr\",\"backAddress\":\"BAck Addr\"\r\n    }\r\n}\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/barogo/delivery",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"barogo",
+						"delivery"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
